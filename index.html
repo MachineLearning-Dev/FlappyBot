@@ -2,22 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/favicon.ico"/>
-    <title>Flappy Bird Game</title>
+    <title>Flappy Bird - Q-Learning AI</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="background"></div>
-    <img src="images/Bird.png" alt="bird-img" class="bird" id="bird-1">
-    <div class="message">
-        Press "Enter" To Start the Game & ArrowUp to Control</p>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="panel" class="panel">
+        <div id="panelHeader" class="panel-header">
+            <span class="panel-title">📊 Statistics</span>
+            <div class="panel-header-btns">
+                <button id="minimizeBtn" class="panel-btn" title="Minimize">—</button>
+            </div>
+        </div>
+
+        <div id="panelBody" class="panel-body">
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <span class="stat-label">Generation</span>
+                    <span class="stat-value" id="genCount">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Best Score</span>
+                    <span class="stat-value" id="bestScore">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Alpha Score</span>
+                    <span class="stat-value" id="alphaScore">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Alive</span>
+                    <span class="stat-value" id="aliveCount">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Epsilon</span>
+                    <span class="stat-value" id="epsilonVal">10%</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Q-States</span>
+                    <span class="stat-value" id="qStates">0</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <label class="control-label">Training Speed</label>
+                <div class="speed-buttons">
+                    <button class="speed-btn active" data-speed="1">1x</button>
+                    <button class="speed-btn" data-speed="5">5x</button>
+                    <button class="speed-btn" data-speed="20">20x</button>
+                    <button class="speed-btn" data-speed="0">MAX</button>
+                </div>
+
+                <label class="control-label">Population</label>
+                <div class="speed-buttons">
+                    <button class="pop-btn" data-pop="1">1</button>
+                    <button class="pop-btn" data-pop="10">10</button>
+                    <button class="pop-btn active" data-pop="50">50</button>
+                    <button class="pop-btn" data-pop="200">200</button>
+                </div>
+
+                <div class="toggle-row">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="showGhosts" checked>
+                        Show Learning Birds
+                    </label>
+                </div>
+                
+                <div class="btn-row">
+                    <button id="resetBtn" class="danger-btn">Reset Brain</button>
+                    <button id="saveBtn" class="save-btn">Save Brain</button>
+                </div>
+                <div class="btn-row" style="margin-top:8px;">
+                    <button id="exportBtn" class="save-btn">Export Brain</button>
+                    <button id="importBtn" class="save-btn">Import Brain</button>
+                    <input type="file" id="importFile" accept=".json" style="display:none">
+                </div>
+                <div class="btn-row" style="margin-top:8px;">
+                    <button id="streamerBtn" class="save-btn" style="background: rgba(155, 89, 182, 0.1); border-color: rgba(155, 89, 182, 0.4); color: #c39bd3;">📺 Enter Streamer Mode</button>
+                </div>
+            </div>
+
+            <div id="scoreHistory">
+                <label class="control-label">Score History (last 50 gens)</label>
+                <canvas id="chartCanvas" width="310" height="80"></canvas>
+            </div>
+        </div>
     </div>
-    <div class="score">
-        <span class="score_title"></span>
-        <span class="score_val"></span>
-    </div>
+
+    <script src="agent.js?v=5"></script>
+    <script src="game.js?v=5"></script>
+    <script src="main.js?v=5"></script>
 </body>
 </html>
