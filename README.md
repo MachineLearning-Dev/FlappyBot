@@ -1,9 +1,9 @@
 # Flappy Bird
 
-![GitHub stars](https://img.shields.io/github/stars/Krshs90/ML-Dev?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Krshs90/ML-Dev?style=social)
-![GitHub issues](https://img.shields.io/github/issues/Krshs90/ML-Dev)
-![GitHub license](https://img.shields.io/github/license/Krshs90/ML-Dev)
+![GitHub stars](https://img.shields.io/github/stars/MachineLearning-Dev/FlappyBot?style=social)
+![GitHub forks](https://img.shields.io/github/forks/MachineLearning-Dev/FlappyBot?style=social)
+![GitHub issues](https://img.shields.io/github/issues/MachineLearning-Dev/FlappyBot)
+![GitHub license](https://img.shields.io/github/license/MachineLearning-Dev/FlappyBot)
 
 A machine learning clone of Flappy Bird that trains an AI using Q-Learning. The game engine is fully decoupled from rendering for parallel, high-speed training directly in the browser.
 
